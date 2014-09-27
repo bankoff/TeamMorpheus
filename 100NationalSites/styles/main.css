@@ -207,11 +207,7 @@ body, html {
 .weather-icon.foggy {
     background-position: 0px -320px;
 }
-.secondFooter{
-    border: 1px solid red;
-    bottom: 0px;
-    position: absolute;
-}
+
 .weather-icon.storm {
     background-position: 0px -384px;
 }
