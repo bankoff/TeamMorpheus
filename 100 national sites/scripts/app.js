@@ -9,7 +9,7 @@
     window.APP = {
       models: {
         home: {
-          title: 'Home'
+          title: 'new.....'
         },
         settings: {
           title: 'Settings'
@@ -43,7 +43,7 @@
         skin: 'flat',
 
         // the application needs to know which view to load first
-        initial: 'views/home.html'
+        initial: 'views/settings.html'
       });
 
     }, false);

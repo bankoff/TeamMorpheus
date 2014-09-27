@@ -5,12 +5,12 @@
   "AppIdentifier": "com.telerik.the100nationalsites",
   "DisplayName": "100 national sites",
   "Author": "",
-  "Description": "",
+  "Description": "100 national sites",
   "BundleVersion": "1.0",
   "AndroidVersionCode": "1",
   "iOSDeviceFamily": [
     "1",
-	"2"
+    "2"
   ],
   "iOSBackgroundMode": [],
   "WP8TileTitle": "",
