@@ -11,16 +11,25 @@
     // create an object to store the models for each view
     window.APP = {
       models: {
-        home: {
-          title: 'new.....'
+        login: {
+          title: 'Login'
         },
-        settings: {
-          title: 'Settings'
+        add: {
+            title: 'Add',
+            ds: new kendo.data.DataSource({
+                data: [{ id: 1, name: 'NDK' }, { id: 2, name: 'Al. Nevski' }, { id: 3, name: 'Telerik' }]
+            }),
+            alert: function (e) {
+                alert(e.data.name);
+            }
         },
-        contacts: {
-          title: 'Contacts',
+        gallery: {
+          title: 'Gallery',
+          options: new kendo.data.DataSource({
+            data: [{ id: 1, name: 'All' }, { id: 2, name: 'Visited' }, { id: 3, name: 'Not visited' }]
+          }),
           ds: new kendo.data.DataSource({
-            data: [{ id: 1, name: 'Bob' }, { id: 2, name: 'Mary' }, { id: 3, name: 'John' }]
+              data: [{ id: 1, name: 'NDK' }, { id: 2, name: 'Al. Nevski' }, { id: 3, name: 'Telerik' }]
           }),
           alert: function(e) {
             alert(e.data.name);
@@ -28,6 +37,8 @@
         }
       }
     };
+
+
 
     // this function is called by Cordova when the application is loaded by the device
     document.addEventListener('deviceready', function () {  
@@ -46,7 +57,7 @@
         skin: 'flat',
 
         // the application needs to know which view to load first
-        initial: 'views/settings.html'
+        initial: 'views/login.html'
       });
 
     }, false);

@@ -1,0 +1,13 @@
+<div data-role="view" data-title="Add" data-layout="main" data-model="APP.models.add">
+
+    <div data-role="tabstrip" class="top-tabstrip">
+        <a data-role="button" data-icon="camera">Add Photo</a>
+    </div>
+
+    <p>closest sites</p>
+    <ul data-role="listview" data-style="inset" data-template="contactsTemplate" data-bind="source: ds"></ul>
+</div>
+
+<script type="text/x-kendo-template" id="contactsTemplate">
+    <a data-bind="click: alert">#: data.id# - #: data.name# </a>
+</script>

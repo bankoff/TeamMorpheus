@@ -82,16 +82,16 @@
     <Content Include="styles\images\search_active2x.png" />
     <Content Include="styles\images\sprite-weather.png" />
     <Content Include="styles\images\sprite-weather2x.png" />
-    <Content Include="styles\settings.css">
+    <Content Include="styles\views.css">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="views\friends.html">
+    <Content Include="views\gallery.html">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="views\me.html">
+    <Content Include="views\add.html">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="views\settings.html" />
+    <Content Include="views\login.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Resources\" />

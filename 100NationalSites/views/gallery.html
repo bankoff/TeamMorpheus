@@ -1,0 +1,24 @@
+<div data-role="view" data-title="Gallery" data-layout="main" data-model="APP.models.gallery">
+
+    <div data-role="tabstrip" class="top-tabstrip">
+        <a data-role="button" data-icon="my">My</a>
+        <a data-role="button" data-icon="bookmarks">Friends</a>
+    </div>
+
+    <select data-template="todo-item-template" style="width: 90%; margin:5%; font-size: 2em" data-bind="source: options"></select>
+
+
+    <ul data-role="listview" data-style="inset" data-template="contactsTemplate" data-bind="source: ds"></ul>
+</div>
+<!-- this is the template used by the listview. template items are automatically
+     wrapped in an <li> by Kendo UI Mobile -->
+<script type="text/x-kendo-template" id="contactsTemplate">
+    <a data-bind = "click: alert">#: data.name# </a>
+</script>
+
+<script type="text/x-kendo-template" id="todo-item-template">
+    <option>
+        #: data.name #
+    </option>
+</script>
+
