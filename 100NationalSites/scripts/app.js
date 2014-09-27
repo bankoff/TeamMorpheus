@@ -1,3 +1,6 @@
+/// <reference path="../kendo/js/kendo.mobile.min.js" />
+/// <reference path="../kendo/js/kendo.mobile.min.intellisense.js" />
+/// <reference path="../kendo/js/kendo.mobile-vsdoc.js" />
 
 (function () {
 
