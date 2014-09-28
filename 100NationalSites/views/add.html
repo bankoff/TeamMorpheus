@@ -1,9 +1,9 @@
-<div data-role="view" data-title="Add" data-layout="main" data-model="app.viewmodels.add">
-
+<div data-role="view" data-title="Add" data-layout="layout" data-model="app.Add">
     <div data-role="tabstrip" class="top-tabstrip">
-        <a data-role="button" data-icon="camera" data-bind="click: addImage">Add Photo</a>
+        <div data-role="touch" data-bind="events: { tap: addPhoto }">
+            <a data-role="button" data-icon="camera">Add Photo</a>
+        </div>
     </div>
-
     <p>closest sites</p>
     <ul data-role="listview" data-style="inset" data-template="contactsTemplate" data-bind="source: ds"></ul>
     <div data-role="footer">
@@ -15,7 +15,6 @@
         <p>&copy; <span data-bind="text: getYear"></span> Team Morpheus</p>
     </div>
 </div>
-
 <script type="text/x-kendo-template" id="contactsTemplate">
     <a data-bind="click: alert">#: data.id# - #: data.name# </a>
 </script>
