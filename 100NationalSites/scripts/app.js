@@ -2,58 +2,6 @@
 /// <reference path="../kendo/js/kendo.mobile.min.intellisense.js" />
 /// <reference path="../kendo/js/kendo.mobile-vsdoc.js" />
 
-//(function () {
-
-//    // store a reference to the application object that will be created
-//    // later on so that we can use it if need be
-//    var app;
-
-//    // create an object to store the models for each view
-//    window.APP = {
-//      models: {
-//        home: {
-//          title: 'new.....'
-//        },
-//        settings: {
-//          title: 'Settings'
-//        },
-//        contacts: {
-//          title: 'Contacts',
-//          ds: new kendo.data.DataSource({
-//            data: [{ id: 1, name: 'Bob' }, { id: 2, name: 'Mary' }, { id: 3, name: 'John' }]
-//          }),
-//          alert: function(e) {
-//            alert(e.data.name);
-//          }
-//        }
-//      }
-//    };
-
-//    // this function is called by Cordova when the application is loaded by the device
-//    //document.addEventListener('deviceready', function () {  
-      
-//    //  // hide the splash screen as soon as the app is ready. otherwise
-//    //  // Cordova will wait 5 very long seconds to do it for you.
-//    //  navigator.splashscreen.hide();
-
-//    //  app = new kendo.mobile.Application(document.body, {
-        
-//    //    // you can change the default transition (slide, zoom or fade)
-//    //    transition: 'slide',
-        
-//    //    // comment out the following line to get a UI which matches the look
-//    //    // and feel of the operating system
-//    //    skin: 'flat',
-
-//    //    // the application needs to know which view to load first
-//    //    initial: 'views/settings.html'
-//    //  });
-
-//    //}, false);
-
-
-//}());
-
 var app = (function (win) {
     'use strict';
 
@@ -61,8 +9,37 @@ var app = (function (win) {
     var showConfirm = {};
     var showError = {};
 
+    // Initialize Everlive SDK
+    var el = new Everlive({
+        apiKey: appSettings.everlive.apiKey,
+        scheme: appSettings.everlive.scheme
+    });
+
     //object with the current user details
     var currentUser = kendo.observable({ data: null });
+
+    var setSitesToLocalStorage = function () {
+        var query = new Everlive.Query(),
+            data = el.data('Locations'),
+            locations = [];
+
+        query.select('Name', 'Location');
+
+        data.get(query)
+            .then(function (data) {
+                locations = JSON.stringify(data.result);
+                win.localStorage.setItem("sites", locations);
+            },
+            //TODO set this to navigator.notification
+            function (error) {
+                console.log(JSON.stringify(error));
+            });
+    }
+
+    var getSitesToLocalStorage = function () {
+        var sites = win.localStorage.getItem("sites");
+        return JSON.parse(sites);
+    };
 
     var isNullOrEmpty = function (value) {
         return typeof value === 'undefined' || value === null || value === '';
@@ -101,8 +78,7 @@ var app = (function (win) {
     };
 
     var onDeviceReady = function () {
-		
-	    win.addEventListener('error', function (e) {
+        win.addEventListener('error', function (e) {
             e.preventDefault();
 
             var message = e.message + "' from " + e.filename + ":" + e.lineno;
@@ -128,6 +104,9 @@ var app = (function (win) {
             showAlert(message, 'Error occured');
         };
 
+        //set all available sites to local storage
+        setSitesToLocalStorage();
+
         // Handle "backbutton" event
         document.addEventListener('backbutton', onBackKeyDown, false);
 
@@ -145,12 +124,6 @@ var app = (function (win) {
     document.addEventListener('deviceready', onDeviceReady, false);
     // Handle "orientationchange" event
     document.addEventListener('orientationchange', fixViewResize);
-
-    // Initialize Everlive SDK
-    var el = new Everlive({
-        apiKey: appSettings.everlive.apiKey,
-        scheme: appSettings.everlive.scheme
-    });
 
     var emptyGuid = '00000000-0000-0000-0000-000000000000';
 
@@ -190,16 +163,16 @@ var app = (function (win) {
 
     // Initialize KendoUI mobile application
     var mobileApp = new kendo.mobile.Application(document.body, {
-                                                    transition: 'slide',
-                                                    skin: 'flat',
-                                                    initial: 'views/login.html'
-                                                });
+        transition: 'slide',
+        skin: 'flat',
+        initial: 'views/login.html'
+    });
 
     var getYear = (function () {
         return new Date().getFullYear();
     }());
 
-    var isConnected = function() {
+    var isConnected = function () {
         var networkState = navigator.connection.type;
 
         var states = {};
@@ -229,6 +202,7 @@ var app = (function (win) {
         everlive: el,
         getYear: getYear,
         currentUser: currentUser,
-        isConnected: isConnected
+        isConnected: isConnected,
+        getSitesToLocalStorage: getSitesToLocalStorage
     };
 }(window));
