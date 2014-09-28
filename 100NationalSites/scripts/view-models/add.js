@@ -18,6 +18,22 @@ app.viewmodels = app.viewmodels || {};
         },
         addImage: function () {
             var success = function (data) {
+
+                navigator.geolocation.getCurrentPosition(onSuccess, onError);
+
+                // onSuccess Geolocation
+                //
+                function onSuccess(position) {
+                    alert('Latitude: ' + position.coords.latitude + '\n' + 'Longitude: ' + position.coords.longitude);
+                }
+
+                // onError Callback receives a PositionError object
+                //
+                function onError(error) {
+                    alert('code: ' + error.code + '\n' +
+                          'message: ' + error.message + '\n');
+                }
+
                 everlive.Files.create({
                     Filename: Math.random().toString(36).substring(2, 15) + ".jpg",
                     ContentType: "image/jpeg",
