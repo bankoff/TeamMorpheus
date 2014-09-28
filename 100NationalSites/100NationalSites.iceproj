@@ -67,6 +67,12 @@
     <Content Include="kendo\typescript\jquery.d.ts" />
     <Content Include="kendo\typescript\kendo.mobile.d.ts" />
     <Content Include="scripts\app.js" />
+    <Content Include="scripts\lib\everlive.all.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="scripts\settings.js">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="scripts\view-models\add.js" />
     <Content Include="scripts\view-models\gallery.js" />
     <Content Include="scripts\view-models\login.js" />
@@ -114,6 +120,7 @@
     <Folder Include="kendo\typescript\" />
     <Folder Include="Plugins\" />
     <Folder Include="scripts\" />
+    <Folder Include="scripts\lib\" />
     <Folder Include="scripts\view-models\" />
     <Folder Include="styles\" />
     <Folder Include="styles\images\" />
