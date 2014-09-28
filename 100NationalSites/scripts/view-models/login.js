@@ -47,8 +47,12 @@ app.Login = (function () {
         };
 
         var show = function () {
-            $loginUsername.val('');
-            $loginPassword.val('');
+            if (app.currentUser.data != null) {
+                app.mobileApp.navigate('views/welcome.html');
+            } else {
+                $loginUsername.val('');
+                $loginPassword.val('');
+            }
         };
 
         // Authenticate to use Backend Services as a particular user
@@ -59,6 +63,12 @@ app.Login = (function () {
 
             // Authenticate using the username and password
             app.everlive.Users.login(username, password)
+            .then(function () {
+                return app.everlive.Users.currentUser();
+             })
+            .then(function(data){
+                app.currentUser.set('data', data.result);
+            })
             .then(function () {
                 app.mobileApp.navigate('views/gallery.html');
             })
@@ -250,7 +260,7 @@ app.Login = (function () {
             loginWithFacebook: loginWithFacebook,
             loginWithGoogle: loginWithGoogle,
             loginWithLiveID: loginWithLiveID,
-            loginWithADSF: loginWithADSF
+            loginWithADSF: loginWithADSF,
         };
 
     }());

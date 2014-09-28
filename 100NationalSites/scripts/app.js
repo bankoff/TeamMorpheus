@@ -61,6 +61,8 @@ var app = (function (win) {
     var showConfirm = {};
     var showError = {};
 
+    //object with the current user details
+    var currentUser = kendo.observable({ data: null });
 
     var isNullOrEmpty = function (value) {
         return typeof value === 'undefined' || value === null || value === '';
@@ -90,9 +92,9 @@ var app = (function (win) {
 
             if (confirmed === true || confirmed === 1) {
                 // Stop EQATEC analytics monitor on app exit
-                if (analytics.isAnalytics()) {
-                    analytics.Stop();
-                }
+                //if (analytics.isAnalytics()) {
+                //    analytics.Stop();
+                //}
                 AppHelper.logout().then(exit, exit);
             }
         }, 'Exit', ['OK', 'Cancel']);
@@ -100,10 +102,7 @@ var app = (function (win) {
 
     var onDeviceReady = function () {
 		
-		
-		
-		
-        win.addEventListener('error', function (e) {
+	    win.addEventListener('error', function (e) {
             e.preventDefault();
 
             var message = e.message + "' from " + e.filename + ":" + e.lineno;
@@ -114,20 +113,21 @@ var app = (function (win) {
         });
 
         // Global error handling
-        showAlert = function (message, title, callback) {
+        this.showAlert = function (message, title, callback) {
             navigator.notification.alert(message, callback || function () {
             }, title, 'OK');
         };
 
         // Global confirm dialog
-        showConfirm = function (message, title, callback) {
+        this.showConfirm = function (message, title, callback) {
             navigator.notification.confirm(message, callback || function () {
             }, title, ['OK', 'Cancel']);
         };
 
-        showError = function (message) {
+        this.showError = function (message) {
             showAlert(message, 'Error occured');
         };
+
         // Handle "backbutton" event
         document.addEventListener('backbutton', onBackKeyDown, false);
 
@@ -192,7 +192,7 @@ var app = (function (win) {
     var mobileApp = new kendo.mobile.Application(document.body, {
                                                     transition: 'slide',
                                                     skin: 'flat',
-                                                    //initial: 'views/login.html
+                                                    initial: 'views/login.html'
                                                 });
 
     var getYear = (function () {
@@ -207,6 +207,7 @@ var app = (function (win) {
         mobileApp: mobileApp,
         helper: AppHelper,
         everlive: el,
-        getYear: getYear
+        getYear: getYear,
+        currentUser: currentUser
     };
 }(window));

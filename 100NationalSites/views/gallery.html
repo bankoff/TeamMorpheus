@@ -1,4 +1,4 @@
-<div data-role="view" data-title="Gallery" data-layout="main" data-model="app.viewmodels.gallery">
+<div data-role="view" data-title="Gallery" data-layout="layout" data-model="app.Gallery">
     <div data-role="header">
         <div data-role="tabstrip" class="top-tabstrip">
             <a data-role="button" data-icon="my">My</a>
@@ -10,6 +10,14 @@
 
     <!--<ul data-role="listview" data-bind="source: ds"></ul>-->
     <ul data-role="listview" data-bind="source: ds" id="images"></ul>
+    <div data-role="footer">
+        <div data-role="tabstrip">
+            <a href="views/login.html" data-icon="home">Home/Login</a>
+            <a href="views/add.html" data-icon="add">Search/Add</a>
+            <a href="views/gallery.html" data-icon="gallery">Gallery</a>
+        </div>
+        <p>&copy; <span data-bind="text: getYear"></span> Team Morpheus</p>
+    </div>
 </div>
 <!-- this is the template used by the listview. template items are automatically
      wrapped in an <li> by Kendo UI Mobile -->
