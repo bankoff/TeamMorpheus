@@ -63,7 +63,7 @@ app.Signup = (function () {
                 Gender: '0',
                 About: '',
                 Friends: [],
-                PhoneNumber: '0'
+                PhoneNumber: ''
             });
             kendo.bind($('#signup-form'), dataSource, kendo.mobile.ui);
         };
