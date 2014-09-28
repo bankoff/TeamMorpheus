@@ -22,19 +22,19 @@
     <div data-role="layout" data-id="main">
 
         <!-- application views will be rendered here -->
-
         <div data-role="footer">
             <div data-role="tabstrip">
                 <a href="views/login.html" data-icon="home">Home/Login</a>
                 <a href="views/add.html" data-icon="add">Search/Add</a>
                 <a href="views/gallery.html" data-icon="gallery">Gallery</a>
+                <p>&copy; <span data-bind="text: getYear"></span> Team Morpheus</p>
             </div>
         </div>
     </div>
     <div data-role="view" id="welcome" data-layout="default" class="welcome-scrn form-view" data-model="app.Login" data-init="app.Login.init" data-show="app.Login.show">
         <div data-role="header"></div>
-        <h1 class="app-logo hide-text center-block">Telerik <small>DevCloud</small></h1>
-        <h2 class="app-name center-text">Friends <small>Sample Application</small></h2>
+        <h2 class="app-logo hide-text center-block">100 National Sites</h2>
+        <h1 class="app-name center-text">100 <small>National Sites</small></h1>
         <form id="login-form">
             <ul data-role="listview" data-style="inset">
                 <li class="username"><input type="text" id="loginUsername" placeholder="Username" required validationmessage="Username is required!" /></li>
@@ -65,8 +65,6 @@
                 <a data-role="button" href="views/signupView.html" class="btn-signup">Don't have an account?</a>
             </li>
         </ol>
-
-        <div data-role="footer"><p>&copy; <span data-bind="text: getYear"></span> Telerik Inc.</p></div>
     </div>
 </body>
 </html>

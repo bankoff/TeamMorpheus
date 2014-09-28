@@ -18,13 +18,8 @@ app.Signup = (function () {
         var signup = function () {
 
             dataSource.Gender = parseInt(dataSource.Gender);
-            var birthDate = new Date(dataSource.BirthDate);
 
-            if (birthDate.toJSON() === null) {
-                birthDate = new Date();
-            }
-
-            dataSource.BirthDate = birthDate;
+            //dataSource.PhoneNumber = parseInt(dataSource.PhoneNumber);
 
             Everlive.$.Users.register(
                 dataSource.Username,
@@ -32,7 +27,7 @@ app.Signup = (function () {
                 dataSource)
             .then(function () {
                 app.showAlert("Registration successful");
-                app.mobileApp.navigate('#welcome');
+                app.mobileApp.navigate('views/gallery.html');
             },
             function (err) {
                 app.showError(err.message);
@@ -68,7 +63,7 @@ app.Signup = (function () {
                 Gender: '0',
                 About: '',
                 Friends: [],
-                BirthDate: new Date()
+                PhoneNumber: '0'
             });
             kendo.bind($('#signup-form'), dataSource, kendo.mobile.ui);
         };
@@ -81,7 +76,7 @@ app.Signup = (function () {
 
         var onSelectChange = function (sel) {
             var selected = sel.options[sel.selectedIndex].value;
-            sel.style.color = (selected == 0) ? '#b6c5c6' : '#34495e';
+            sel.style.color = (selected === 0) ? '#b6c5c6' : '#34495e';
         }
 
         return {

@@ -194,7 +194,6 @@ var app = (function (win) {
                                                     skin: 'flat',
                                                     //initial: 'views/login.html
                                                 });
-		
 
     var getYear = (function () {
         return new Date().getFullYear();
