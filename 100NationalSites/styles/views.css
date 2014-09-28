@@ -23,3 +23,7 @@
 .km-gallery:before {
     content: "\e07c";
 }
+
+#small {
+    font-size: 0.7em;
+}

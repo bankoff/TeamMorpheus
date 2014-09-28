@@ -70,7 +70,7 @@ app.Login = (function () {
                 app.currentUser.set('data', data.result);
             })
             .then(function () {
-                app.mobileApp.navigate('views/gallery.html');
+                app.mobileApp.navigate('views/welcome.html');
             })
             .then(null,
                   function (err) {
