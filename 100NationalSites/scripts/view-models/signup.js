@@ -27,7 +27,7 @@ app.Signup = (function () {
                 dataSource)
             .then(function () {
                 app.showAlert("Registration successful. You can login now!");
-                app.mobileApp.navigate('#welcome');
+                app.mobileApp.navigate('views/login.html');
             },
             function (err) {
                 app.showError(err.message);
