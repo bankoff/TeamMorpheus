@@ -15,10 +15,7 @@ app.Welcome = (function () {
 
         var logout = function () {
             navigator.notification.confirm('Do you really want to exit?', function (confirmed) {
-                var exit = function () {
-                    navigator.app.exitApp();
-                };
-
+                
                 if (confirmed === true || confirmed === 1) {
                     // Stop EQATEC analytics monitor on app exit
                     //if (analytics.isAnalytics()) {
@@ -28,7 +25,12 @@ app.Welcome = (function () {
                     app.helper.logout();
                     app.mobileApp.navigate('views/login.html');
                    // app.helper.logout().then(exit, exit);
-                }
+                };
+
+                var exit = function () {
+                    navigator.app.exitApp();
+                };
+
             }, 'Exit', ['OK', 'Cancel']);
         };
 
