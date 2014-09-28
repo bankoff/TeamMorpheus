@@ -67,6 +67,9 @@
     <Content Include="kendo\typescript\jquery.d.ts" />
     <Content Include="kendo\typescript\kendo.mobile.d.ts" />
     <Content Include="scripts\app.js" />
+    <Content Include="scripts\view-models\add.js" />
+    <Content Include="scripts\view-models\gallery.js" />
+    <Content Include="scripts\view-models\login.js" />
     <Content Include="styles\main.css" />
     <Content Include="styles\images\appbuilder.png" />
     <Content Include="styles\images\appbuilder2x.png" />
@@ -111,6 +114,7 @@
     <Folder Include="kendo\typescript\" />
     <Folder Include="Plugins\" />
     <Folder Include="scripts\" />
+    <Folder Include="scripts\view-models\" />
     <Folder Include="styles\" />
     <Folder Include="styles\images\" />
     <Folder Include="views\" />

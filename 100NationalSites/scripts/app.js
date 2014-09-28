@@ -9,34 +9,34 @@
     var app;
 
     // create an object to store the models for each view
-    window.APP = {
-      models: {
-        login: {
-          title: 'Login'
-        },
-        add: {
-            title: 'Add',
-            ds: new kendo.data.DataSource({
-                data: [{ id: 1, name: 'NDK' }, { id: 2, name: 'Al. Nevski' }, { id: 3, name: 'Telerik' }]
-            }),
-            alert: function (e) {
-                alert(e.data.name);
-            }
-        },
-        gallery: {
-          title: 'Gallery',
-          options: new kendo.data.DataSource({
-            data: [{ id: 1, name: 'All' }, { id: 2, name: 'Visited' }, { id: 3, name: 'Not visited' }]
-          }),
-          ds: new kendo.data.DataSource({
-              data: [{ id: 1, name: 'NDK' }, { id: 2, name: 'Al. Nevski' }, { id: 3, name: 'Telerik' }]
-          }),
-          alert: function(e) {
-            alert(e.data.name);
-          }
-        }
-      }
-    };
+    //window.APP = {
+    //  models: {
+    //    login: {
+    //      title: 'Login'
+    //    },
+    //    add: {
+    //        title: 'Add',
+    //        ds: new kendo.data.DataSource({
+    //            data: [{ id: 1, name: 'NDK' }, { id: 2, name: 'Al. Nevski' }, { id: 3, name: 'Telerik' }]
+    //        }),
+    //        alert: function (e) {
+    //            alert(e.data.name);
+    //        }
+    //    },
+    //    gallery: {
+    //      title: 'Gallery',
+    //      options: new kendo.data.DataSource({
+    //        data: [{ id: 1, name: 'All' }, { id: 2, name: 'Visited' }, { id: 3, name: 'Not visited' }]
+    //      }),
+    //      ds: new kendo.data.DataSource({
+    //          data: [{ id: 1, name: 'NDK' }, { id: 2, name: 'Al. Nevski' }, { id: 3, name: 'Telerik' }]
+    //      }),
+    //      alert: function(e) {
+    //        alert(e.data.name);
+    //      }
+    //    }
+    //  }
+    //};
 
 
 
