@@ -12,11 +12,17 @@ app.Add = (function () {
             query.where().nearSphere('Location', [location.longitude, location.latitude], 0.5, 'km');
             var sites = app.everlive.data('Locations');
             sites.get(query)
-                .then(function(data) {
-                        console.log(JSON.stringify(data.result));
+                .then(function (data) {
+                    if (data != null) {
+                        return data.result[0];
+                    } else {
+                        return data;
+                    }
+                        //console.log(JSON.stringify(data.result));
                     },
                     function(error) {
                         console.log(JSON.stringify(error));
+                        return null;
                     });
         };
 
