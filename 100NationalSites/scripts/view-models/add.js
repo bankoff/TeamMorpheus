@@ -7,24 +7,24 @@ app.Add = (function () {
 
     var addViewModel = (function () {
 
-        var isLocationValidSite = function (location) {
+        var isLocationValidSite = function(location) {
             var query = new Everlive.Query();
             query.where().nearSphere('Location', [location.longitude, location.latitude], 0.5, 'km');
             var sites = app.everlive.data('Locations');
             sites.get(query)
-                .then(function (data) {
-                    console.log(JSON.stringify(data.result));
-                },
-                function (error) {
-                    console.log(JSON.stringify(error));
-                });
-        }
+                .then(function(data) {
+                        console.log(JSON.stringify(data.result));
+                    },
+                    function(error) {
+                        console.log(JSON.stringify(error));
+                    });
+        };
 
-        var currentLocation = function () {
+        var currentLocation = function() {
             var options = {
-                enableHighAccuracy: true
-            },
-            currentPosition = {};
+                    enableHighAccuracy: true
+                },
+                currentPosition = {};
 
 
             var locator = navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
@@ -50,17 +50,17 @@ app.Add = (function () {
             } else {
                 return false;
             }
-        }
+        };
 
         var addPhotoDetailsToDB = function () {
 
         };
 
-        var addPhoto = function () {
+        var addPhoto = function() {
             if (app.isConnected()) {
                 var location = currentLocation();
                 isLocationValidSite(location);
-                var success = function (data) {
+                var success = function(data) {
                     app.everlive.Files.create({
                         Filename: Math.random().toString(36).substring(2, 15) + ".jpg",
                         ContentType: "image/jpeg",
@@ -68,7 +68,7 @@ app.Add = (function () {
                     });
                 };
 
-                var error = function () {
+                var error = function() {
                     app.showAlert("Unfortunately we could not add the image");
                 };
 
@@ -80,7 +80,7 @@ app.Add = (function () {
 
                 navigator.camera.getPicture(success, error, config);
             }
-        }
+        };
 
         return {
             addPhoto: addPhoto

@@ -172,7 +172,7 @@ var app = (function (win) {
         return new Date().getFullYear();
     }());
 
-    var isConnected = function () {
+    var isConnected = function() {
         var networkState = navigator.connection.type;
 
         var states = {};
@@ -182,15 +182,16 @@ var app = (function (win) {
         //states[Connection.CELL_2G] = 'Cell 2G connection';
         //states[Connection.CELL_3G] = 'Cell 3G connection';
         //states[Connection.CELL_4G] = 'Cell 4G connection';
-        states[Connection.NONE] = 'No network connection';
+        states[Connection.NONE] = 'Check your \nnetwork connection';
 
         if (states[networkState] === states[Connection.NONE]) {
-            alert(states[networkState]);
+            navigator.notification.alert(states[networkState]);
+            navigator.notification.vibrate(1000);
             return false;
         }
 
         return true;
-    }
+    };
 
     return {
         showAlert: showAlert,
