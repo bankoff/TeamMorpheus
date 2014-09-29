@@ -58,6 +58,9 @@ app.Add = (function () {
 
         var addPhoto = function() {
             if (app.isConnected()) {
+                var text = app.currentUser.data.DisplayName + " visited " + "Cherni vruh";
+
+
                 var location = currentLocation();
                 isLocationValidSite(location);
                 var success = function (data) {
@@ -67,7 +70,8 @@ app.Add = (function () {
                         base64: data,
                         Longitude: location.longitude,
                         Latitude: location.latitude,
-                        Name: "Cherni vruh"
+                        Text: text,
+                        Phone: app.currentUser.data.PhoneNumber
                     });
                 };
 

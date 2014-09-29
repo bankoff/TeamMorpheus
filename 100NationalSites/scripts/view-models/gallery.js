@@ -14,16 +14,10 @@ app.viewmodels = app.viewmodels || {};
         }),
         ds: function () {
             everlive.Files.get().then(function (data) {
-                var files = [];
-                data.result.forEach(function (image) {
-                    files.push(image);
+                $("#images").kendoMobileListView({
+                    dataSource: data.result,
+                    template: "<img src='#: data.Uri #' style='width:100%'/><span>#: data.Text #</span>"
                 });
-                setTimeout(function () {
-                    $("#images").kendoMobileListView({
-                        dataSource: files,
-                        template: "<img src='#: data.Uri #' style='width:100%'/><span>#: data.Name #</span>"
-                    });
-                }, 1000);
             });
         },
         alert: function (e) {
