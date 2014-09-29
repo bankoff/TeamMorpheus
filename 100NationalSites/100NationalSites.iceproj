@@ -82,7 +82,10 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="scripts\view-models\add.js" />
-    <Content Include="scripts\view-models\gallery.js" />
+    <Content Include="scripts\view-models\gallery.js">
+      <ExcludeFromSourceAnalysis>True</ExcludeFromSourceAnalysis>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Content>
     <Content Include="scripts\view-models\login.js" />
     <Content Include="styles\main.css" />
     <Content Include="styles\images\appbuilder.png" />
