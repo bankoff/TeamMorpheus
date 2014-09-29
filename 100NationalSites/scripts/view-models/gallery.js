@@ -16,12 +16,12 @@ app.viewmodels = app.viewmodels || {};
             everlive.Files.get().then(function (data) {
                 var files = [];
                 data.result.forEach(function (image) {
-                    files.push(image.Uri);
+                    files.push(image);
                 });
                 setTimeout(function () {
                     $("#images").kendoMobileListView({
                         dataSource: files,
-                        template: "<img src='#: data #' style='width:100%'/><span>#: data #</span>"
+                        template: "<img src='#: data.Uri #' style='width:100%'/><span>#: data.Name #</span>"
                     });
                 }, 1000);
             });

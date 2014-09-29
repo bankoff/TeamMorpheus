@@ -36,21 +36,21 @@ app.Signup = (function () {
 
         // Executed after Signup view initialization
         // init form validator
-        var init = function () {
+        var init = function() {
 
             $signUpForm = $('#signUp');
             $formFields = $signUpForm.find('input, textarea, select');
             $signupBtnWrp = $('#signupBtnWrp');
             validator = $signUpForm.kendoValidator({ validateOnBlur: false }).data('kendoValidator');
 
-            $formFields.on('keyup keypress blur change input', function () {
+            $formFields.on('keyup keypress blur change input', function() {
                 if (validator.validate()) {
                     $signupBtnWrp.removeClass('disabled');
                 } else {
                     $signupBtnWrp.addClass('disabled');
                 }
             });
-        }
+        };
 
         // Executed after show of the Signup view
         var show = function () {
@@ -74,10 +74,10 @@ app.Signup = (function () {
             $signupBtnWrp.addClass('disabled');
         };
 
-        var onSelectChange = function (sel) {
+        var onSelectChange = function(sel) {
             var selected = sel.options[sel.selectedIndex].value;
             sel.style.color = (selected === 0) ? '#b6c5c6' : '#34495e';
-        }
+        };
 
         return {
             init: init,

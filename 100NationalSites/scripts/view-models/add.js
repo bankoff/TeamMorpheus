@@ -60,11 +60,14 @@ app.Add = (function () {
             if (app.isConnected()) {
                 var location = currentLocation();
                 isLocationValidSite(location);
-                var success = function(data) {
+                var success = function (data) {
                     app.everlive.Files.create({
                         Filename: Math.random().toString(36).substring(2, 15) + ".jpg",
                         ContentType: "image/jpeg",
-                        base64: data
+                        base64: data,
+                        Longitude: location.longitude,
+                        Latitude: location.latitude,
+                        Name: "Cherni vruh"
                     });
                 };
 
@@ -78,6 +81,8 @@ app.Add = (function () {
                     targetWidth: 400
                 };
 
+                //**************************//
+                //navigator.camera.Direction(0);
                 navigator.camera.getPicture(success, error, config);
             }
         };
