@@ -18,30 +18,16 @@ app.viewmodels = app.viewmodels || {};
                 data.result.forEach(function (image) {
                     files.push(image.Uri);
                 });
-
-                $("#images").kendoMobileListView({
-                    dataSource: files,
-                    template: "<img src='#: data #' style='width:100%'/><span>#: data #</span>"
-                });
+                setTimeout(function () {
+                    $("#images").kendoMobileListView({
+                        dataSource: files,
+                        template: "<img src='#: data #' style='width:100%'/><span>#: data #</span>"
+                    });
+                }, 1000);
             });
         },
-        //ds: new kendo.data.DataSource({
-        //    data: [{ id: 1, name: 'NDK' }, { id: 2, name: 'Al. Nevski' }, { id: 3, name: 'Telerik' }]
-        //}),
         alert: function (e) {
             alert(e.data.name);
         }
     });
-
-//    //function loadTodos() {
-//    //    return window.todos;
-//    //}
-
-//    //scope.todos = function (e) {
-//    //    var vm = kendo.observable({
-//    //        title: 'List TODOs',
-//    //        todos: loadTodos()
-//    //    });
-//    //    kendo.bind(e.view.element, vm);
-//    //};
 }(app.viewmodels));

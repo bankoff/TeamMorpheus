@@ -27,3 +27,7 @@
 #small {
     font-size: 0.7em;
 }
+
+#add-photo {
+    display: block;
+}
