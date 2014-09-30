@@ -1,9 +1,9 @@
 <div data-role="view" data-title="Gallery" data-layout="layout" data-model="app.Gallery" data-show="app.Gallery.show" data-init="app.Gallery.init">
     <div data-role="header">
-        <div data-role="tabstrip" class="top-tabstrip">
+        <!--<div data-role="tabstrip" class="top-tabstrip">
             <a data-role="button" data-icon="my">My</a>
             <a data-role="button" data-icon="bookmarks">Friends</a>
-        </div>
+        </div>-->
         <select data-template="chooseTemplate" style="width: 90%; height: 100%; margin:5%; padding-top:1%; padding-bottom: 1%; font-size: 2em" data-bind="source: imagesOptions, events: { change: selectionImagesList }"></select>
     </div>
     <ul data-template="imagesTemplate" data-role="listview" data-bind="source: imagesDataList" id="imagesList"></ul>
