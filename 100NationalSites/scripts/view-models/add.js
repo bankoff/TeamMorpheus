@@ -8,34 +8,14 @@ app.Add = (function () {
     var addViewModel = (function () {
 
         var isLocationValidSite = function (location) {
-            //var query = new Everlive.Query();
-            //query
-            //    .where()
-            //    .nearSphere('Location', [location.longitude, location.latitude], 50, 'km');
-            //var sites = app.everlive.data('Locations');
-            //sites.get(query)
-            //    .then(function (data) {
-            //        console.log(JSON.stringify(data));
-            //    },
-            //    function (error) {
-            //        console.log(JSON.stringify(error));
-            //    });
-
             var dist = 0.01;
             var result;
 
             var sites = app.everlive.data('Locations');
             result = sites.get().then(function (data) {
-                //console.log(data);
+
                 for (var i = 0; i < data.result.length; i++) {
-                    //console.log(data.result[i].Location.longitude);
-                    //console.log(location.longitude);
-                    //console.log('_______________');
-                    //console.log(data.result[i].Location.latitude);
-                    //console.log(location.latitude);
-                    //console.log('_______________');
                     if (Math.abs(data.result[i].Location.longitude-location.longitude)<dist && Math.abs(data.result[i].Location.latitude - location.latitude)<dist) {
-                        //console.log("true");
                         return true;
                     }
                 }
@@ -51,23 +31,6 @@ app.Add = (function () {
             navigator.notification.alert("This is not a site from \nthe 100 national tourist sites.\nThe photo will not be added.");
             navigator.notification.vibrate(1000);
             return false;
-
-            //var query = new Everlive.Query();
-            //query.where().nearSphere('Location', [location.longitude, location.latitude], 0.5, 'km');
-            //var sites = app.everlive.data('Locations');
-            //sites.get(query)
-            //    .then(function (data) {
-            //        if (data != null) {
-            //            return data.result[0];
-            //        } else {
-            //            return data;
-            //        }
-            //            //console.log(JSON.stringify(data.result));
-            //        },
-            //        function(error) {
-            //            console.log(JSON.stringify(error));
-            //            return null;
-            //        });
         };
 
         var currentLocation = function() {
@@ -81,7 +44,6 @@ app.Add = (function () {
 
             // onSuccess Geolocation
             function onSuccess(position) {
-                //alert('Latitude: ' + position.coords.latitude + '\n' + 'Longitude: ' + position.coords.longitude);
                 currentPosition.latitude = position.coords.latitude;
                 currentPosition.longitude = position.coords.longitude;
 
@@ -100,10 +62,6 @@ app.Add = (function () {
             } else {
                 return false;
             }
-        };
-
-        var addPhotoDetailsToDB = function () {
-
         };
 
         var addPhoto = function() {
@@ -135,7 +93,6 @@ app.Add = (function () {
                         targetWidth: 400
                     };
 
-                    //**************************//
                     //navigator.camera.Direction(0);
                     navigator.camera.getPicture(success, error, config);
                 }

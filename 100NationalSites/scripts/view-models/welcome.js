@@ -17,14 +17,9 @@ app.Welcome = (function () {
             navigator.notification.confirm('Do you really want to exit?', function (confirmed) {
                 
                 if (confirmed === true || confirmed === 1) {
-                    // Stop EQATEC analytics monitor on app exit
-                    //if (analytics.isAnalytics()) {
-                    //    analytics.Stop();
-                    //}
                     app.currentUser = kendo.observable({ data: null });
                     app.helper.logout();
                     app.mobileApp.navigate('views/login.html');
-                   // app.helper.logout().then(exit, exit);
                 };
 
                 var exit = function () {

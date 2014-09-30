@@ -47,11 +47,6 @@ app.Gallery = (function () {
                         return element.Owner === app.currentUser.data.Id;
                     });
                     break;
-                //case 3:
-                //    filteredData = imagesDataList.filter(function (element) {
-                //        return element.Owner !== app.currentUser.data.Id;
-                //    });
-                    break;
                 default:
                     filteredData = imagesDataList.filter(function (element) {
                         return element;

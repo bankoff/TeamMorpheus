@@ -68,10 +68,6 @@ var app = (function (win) {
             };
 
             if (confirmed === true || confirmed === 1) {
-                // Stop EQATEC analytics monitor on app exit
-                //if (analytics.isAnalytics()) {
-                //    analytics.Stop();
-                //}
                 AppHelper.logout().then(exit, exit);
             }
         }, 'Exit', ['OK', 'Cancel']);
@@ -112,12 +108,6 @@ var app = (function (win) {
 
         navigator.splashscreen.hide();
         fixViewResize();
-
-
-        //if (analytics.isAnalytics()) {
-        //    analytics.Start();
-        //}
-
     };
 
     // Handle "deviceready" event
@@ -176,12 +166,7 @@ var app = (function (win) {
         var networkState = navigator.connection.type;
 
         var states = {};
-        //states[Connection.UNKNOWN] = 'Unknown connection';
-        //states[Connection.ETHERNET] = 'Ethernet connection';
-        //states[Connection.WIFI] = 'WiFi connection';
-        //states[Connection.CELL_2G] = 'Cell 2G connection';
-        //states[Connection.CELL_3G] = 'Cell 3G connection';
-        //states[Connection.CELL_4G] = 'Cell 4G connection';
+
         states[Connection.NONE] = 'Check your \nnetwork connection';
 
         if (states[networkState] === states[Connection.NONE]) {

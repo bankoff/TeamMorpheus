@@ -19,8 +19,6 @@ app.Signup = (function () {
 
             dataSource.Gender = parseInt(dataSource.Gender);
 
-            //dataSource.PhoneNumber = parseInt(dataSource.PhoneNumber);
-
             Everlive.$.Users.register(
                 dataSource.Username,
                 dataSource.Password,
